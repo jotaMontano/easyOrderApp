@@ -1,0 +1,134 @@
+#card-container {
+    padding: 12% 20% 12%;
+    background-color: #f1f1f1;
+}
+
+#log-in-btn {
+    font-weight: 500;
+    font-size: large;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+.close {
+    position: absolute;
+    right: 5%;
+    top: 3%;
+    background-color: transparent;
+    transition: color 0.1s ease-out;
+    font-family: serif;
+    font-size: 2.5em;
+    width: 1.2em;
+    color: #ccc;
+    cursor: pointer;
+    line-height: 1em;
+    text-align: end;
+}
+
+.close:hover {
+    transform: none;
+    color: #f27474;
+}
+
+/*
+ * Card component
+ */
+
+.profile-img-card {
+    width: 104px;
+    height: 90px;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+/*
+ * Form styles
+ */
+.profile-name-card {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+.reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin #inputUser,
+.form-signin #inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+.form-signin input[type='email'],
+.form-signin input[type='password'],
+.form-signin input[type='text'],
+.form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    border-color: #8bc34a;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px #6c757d, 0 0 8px #6c757d;
+    box-shadow: inset 0 1px 1px #6c757d, 0 0 8px #6c757d;
+}
+
+.btn.btn-signin {
+    /*background-color: #4d90fe; */
+    /*background-color: rgb(104, 145, 162);*/
+    /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+    color: #fff;
+    background-color: #009688;
+    border-color: #009688;
+}
+
+.btn.btn-signin:disabled,
+.btn.btn-signin:hover:disabled,
+.btn.btn-signin:active:disabled,
+.btn.btn-signin:focus:disabled {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}

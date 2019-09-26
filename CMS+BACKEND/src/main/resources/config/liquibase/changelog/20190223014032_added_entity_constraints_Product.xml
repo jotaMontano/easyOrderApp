@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Product.
+    -->
+    <changeSet id="20190223014032-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="product_extras"
+                                 constraintName="fk_product_extras_product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+        <addForeignKeyConstraint baseColumnNames="extras_id"
+                                 baseTableName="product_extras"
+                                 constraintName="fk_product_extras_extras_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="extra"/>
+        
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="product_combo"
+                                 constraintName="fk_product_combo_product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+        <addForeignKeyConstraint baseColumnNames="combo_id"
+                                 baseTableName="product_combo"
+                                 constraintName="fk_product_combo_combo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+        
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="product_discounts"
+                                 constraintName="fk_product_discounts_product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+        <addForeignKeyConstraint baseColumnNames="discounts_id"
+                                 baseTableName="product_discounts"
+                                 constraintName="fk_product_discounts_discounts_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="discount"/>
+        
+        <addForeignKeyConstraint baseColumnNames="categories_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product_categories_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"/>
+
+        <addForeignKeyConstraint baseColumnNames="client_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product_client_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="client"/>
+
+    </changeSet>
+</databaseChangeLog>

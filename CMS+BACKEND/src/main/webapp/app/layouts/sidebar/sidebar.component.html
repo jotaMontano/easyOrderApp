@@ -1,0 +1,84 @@
+<div class="app-sidebar" data-active-color="white" data-background-color="easy-order">
+    <!-- Sidebar Header starts -->
+    <div class="sidebar-header">
+        <div class="logo clearfix">
+            <a [routerLink]="['/orders']" class="logo-text float-left">
+                <div class="logo-img">
+                    <img src="../../../assets/img/logos/EasyOrderW.png" alt="logo">
+                </div>
+                <span class="text align-middle">EasyOrder</span>
+            </a>
+        </div>
+    </div>
+    <!-- Sidebar Header Ends -->
+
+    <!-- Sidebar Content starts -->
+    <div class="sidebar-content">
+        <div class="nav-container">
+            <ul class="navigation">
+                <!-- First level menu -->
+                <li *ngIf="isAuthenticated()"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a routerLink="orders">
+                        <i class="fas fa-utensils"></i>
+                        <span class="menu-title">Ordenes</span>
+                    </a>
+                </li>
+                <li *ngIf="isAuthenticated()"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a routerLink="categories">
+                        <i class="icon-tag"></i>
+                        <span class="menu-title">Categorías</span>
+                </li>
+                 <li *ngIf="isAuthenticated()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a routerLink="products">
+                        <i class="ft-shopping-cart"></i>
+                        <span class="menu-title">Products</span>
+                    </a>
+                </li>
+                <li *ngIf="isAuthenticated()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a routerLink="extras">
+                        <i class="fa ft-plus"></i>
+                        <span class="menu-title">Extras</span>
+                    </a>
+                </li>
+                <li *ngIf="isAuthenticated()"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a routerLink="discounts">
+                        <i class="icon-calculator"></i>
+                        <span class="menu-title">Descuentos</span>
+                    </a>
+                </li>
+                <li *ngIf="isAuthenticated()" class="has-sub" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a>
+                        <i class="icon-user"></i>
+                        <span class="menu-title">Perfil</span>
+                    </a>
+                    <ul class="menu-content">
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <a routerLink="settings">
+                                <span>Mi cuenta</span>
+                            </a>
+                        </li>
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                            <a routerLink="password">
+                                <span>Cambiar contraseña</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li *ngIf="!isAuthenticated()">
+                    <a class="dropdown-item" (click)="login()" id="login">
+                        <fa-icon icon="sign-in-alt" fixedWidth="true"></fa-icon>
+                        <span jhiTranslate="global.menu.account.login">Sign in</span>
+                    </a>
+                </li>
+                <li *ngIf="isAuthenticated()">
+                    <a class="dropdown-item" (click)="logout()" id="logout">
+                        <fa-icon icon="sign-out-alt" fixedWidth="true"></fa-icon>
+                        <span jhiTranslate="global.menu.account.logout">Sign out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Sidebar Content Ends -->
+    <div class="sidebar-background"></div>
+</div>

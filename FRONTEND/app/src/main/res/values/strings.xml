@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">EASY ORDER</string>
+
+
+    <!-- login-->
+    <string name="hint_username_login">Usuario</string>
+    <string name="hint_password_login">Contraseña</string>
+    <string name="text_button_login">Ingresar</string>
+    <string name="login_error_login_v">Ocurrió un error: </string>
+    <string name="user_validation_login">Correo requerido</string>
+    <!--signin-->
+    <string name="hint_email_signin">Correo</string>
+    <string name="hint_name_signin">Nombre</string>
+    <string name="hint_user_signin">Usuario</string>
+    <string name="hint_password_signin">Contraseña</string>
+    <string name="hint_confirm_password_signin">Confirmar contraseña</string>
+    <string name="text_button_signin">Únete</string>
+    <string name="toolbar_tittle_signin">Crear cuenta</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="Product_detail">Product detail</string>
+    <string name="add_product">+</string>
+    <string name="remove_product">-</string>
+    <string name="default_amount">1</string>
+    <string name="add_product_to_order">Agregar producto</string>
+    <string name="Category">Categorias</string>
+    <string name="Products">Productos</string>
+    <string name="Extras">Extras</string>
+    <string name="Discounts">Descuentos</string>
+    <string name="Description">Descripcion:</string>
+    <string name="Price">Precio:</string>
+    <string name="specialInstructions">Agrega un comentario</string>
+    <string name="moreThanOne">It can`t be less than 1</string>
+    <string name="password_validation_login">Contraseña requerida</string>
+    <string name="order">Ordenar</string>
+    <string name="token">token</string>
+    <string name="user_password_validation_login">Usuario y contraseña requeridos</string>
+    <string name="top">Ver destacados</string>
+    <!-- popup order strings-->
+    <string name="popupTitle">Productos de la orden</string>
+    <string name="save">Ordenar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="total">Total:</string>
+    <!-- view de espera -->
+    <string name="timeWaiting">Tiempo esperando</string>
+    <string name="estimatedTime">Tiempo estimado</string>
+    <string name="startTime">00:00</string>
+    <string name="returnToOrder">Volver a ordenar</string>
+    <string name="pay">Pagar</string>
+
+    <!-- order cardview strings -->
+    <string name="ordernow">Ir a ordernar</string>
+    <string name="discount">10%</string>
+    <string name="discountName">Happy Hour</string>
+    <string name="topProd">Productos destacados</string>
+
+    <!-- view de pagar cuenta -->
+    <string name="listOfProductsToPay">Lista de productos a pagar:</string>
+    <string name="payAll">Pagar todo</string>
+    <string name="payIndividually">Pagar individualmente</string>
+    <string name="selectProduct">Seleccione los productos que vas a pagar</string>
+</resources>

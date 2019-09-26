@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Discount.
+    -->
+    <changeSet id="20190223014033-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="discount_id"
+                                 baseTableName="discount_days"
+                                 constraintName="fk_discount_days_discount_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="discount"/>
+        <addForeignKeyConstraint baseColumnNames="days_id"
+                                 baseTableName="discount_days"
+                                 constraintName="fk_discount_days_days_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="list_of_value"/>
+        
+        <addForeignKeyConstraint baseColumnNames="client_id"
+                                 baseTableName="discount"
+                                 constraintName="fk_discount_client_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="client"/>
+
+    </changeSet>
+</databaseChangeLog>

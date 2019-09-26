@@ -1,0 +1,23 @@
+/* after changing this file run 'npm run webpack:build' */
+
+/***************************
+put Sass variables here:
+eg $input-color: red;
+****************************/
+// Override Boostrap variables
+@import 'bootstrap-variables';
+// Import Bootstrap source files from node_modules
+@import '~bootstrap/scss/bootstrap';
+@import 'apex/variables';
+@import 'apex/app-variables';
+@import 'apex/mixins';
+@import 'apex/custom-bootstrap';
+@import 'apex/core';
+@import 'apex/fonts/weather-icons';
+@import 'apex/plugins';
+@import '../../assets/fonts/feather/style.css';
+@import '../../assets/fonts/feather/style.min.css';
+@import '../../assets/fonts/simple-line-icons/style.css';
+@import '../../assets/vendor/pace/themes/black/pace-theme-flash.css';
+//@import '../../assets/fonts/weathericons';
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */

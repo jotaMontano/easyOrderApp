@@ -1,0 +1,105 @@
+<section class="pt-3">
+    <div class="row justify-content-center">
+        <div class="card col-md-12 mt-0">
+            <div class="card-body">
+                <div class="px-3">
+                    <div class="card-header">
+                        <div class="pt-2 pb-2">
+                            <div class="display-inline-block width-25-per valign-middle">
+                                <h2 id="page-heading">
+                                    <span><i class="ft-shopping-cart valign-middle"></i>  Mis Productos</span>
+                                </h2>
+                            </div>
+                            <div class="row pt-4">
+                                <div class="col-md-5">
+                                        <div class="input-group mb-0">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ft ft-search"></i></span>
+                                            </div>
+                                            <input type="text" id="buscar" class="form-control" [(ngModel)]="query" (keyup)="onSearch()" placeholder="Buscar: nombre">
+                                        </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="input-group mb-0">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="icon-check"></i></span>
+                                        </div>
+                                        <select class="form-control" id="status" name="selectStatus" class="form-control" #selectStatus (change)="onSearchByState(selectStatus.value)">
+                                            <option value="" selected disabled hidden>Buscar por estado</option>
+                                            <option value="1">Activos</option>
+                                            <option value="0">Inactivos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 float-right">
+                                    <div class="display-inline-block float-right valign-middle">
+                                        <button class="btn easy-order-btn mb-0 jh-create-entity create-producto"  [routerLink]="['/products/new']">
+                                            <span class="fa fa-plus"></span>
+                                            <span>
+                                                Crear producto
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" *ngIf="products">
+                            <div class="col-md-12 center">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                                        <th jhiSortBy="name"><span>Nombre</span><span class="fa fa-sort ml-2"></span></th>
+                                        <th jhiSortBy="description"><span>Descripción</span><span class="fa fa-sort ml-2"></span></th>
+                                        <th jhiSortBy="wait_average"><span>Espera</span><span class="fa fa-sort ml-2"></span></th>
+                                        <th jhiSortBy="price"><span>Precio</span><span class="fa fa-sort ml-2"></span></th>
+                                        <th jhiSortBy="type"><span>Tipo</span><span class="fa fa-sort ml-2"></span></th>
+                                        <th class="text-center width-15-per">
+                                            <span>Acción</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr id="actions" *ngFor="let product of products; trackBy: trackId">
+                                        <td class="valign-middle">{{product.name}}</td>
+                                        <td class="valign-middle width-30-per">{{product.description}}</td>
+                                        <td class="valign-middle">{{product.waitAverage}} min</td>
+                                        <td class="valign-middle">₡{{product.price | number:'.2-2'}}</td>
+                                        <td class="valign-middle">{{getTypeProduct(product)}}</td>
+                                        <td class="text-center valign-middle width-15-per">
+                                            <button type="submit"
+                                                    [routerLink]="['/products', product.id, 'edit']"
+                                                    class="btn easy-order-btn success-btn btn-sm mb-0">
+                                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                            </button>
+                                            <button *ngIf="product.status != false" type="submit" (click)="deleteProduct(product)"
+                                                    class="btn btn-danger danger-btn btn-sm mb-0">
+                                                <span class="fa fa-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div *ngIf="products && products.length" class="w-100">
+                                <div class="row justify-content-center">
+                                    <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="products.length === 0">
+                            <div class="col-md-12">
+                                <h5 class="text-center font-weight-bold">No hay datos por mostrar.</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,29 @@
+{
+    "easyOrderApp": {
+        "client": {
+            "home": {
+                "title": "Clients",
+                "createLabel": "Crear nuevo Client",
+                "createOrEditLabel": "Crear o editar Client"
+            },
+            "created": "Un nuevo Client ha sido creado con el identificador {{ param }}",
+            "updated": "Un Client ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Client ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Client {{ id }}?"
+            },
+            "detail": {
+                "title": "Client"
+            },
+            "email": "Email",
+            "name": "Name",
+            "user": "User",
+            "products": "Products",
+            "categories": "Categories",
+            "extras": "Extras",
+            "discounts": "Discounts",
+            "order": "Order",
+            "orderHistory": "Order History"
+        }
+    }
+}

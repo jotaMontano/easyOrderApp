@@ -1,0 +1,119 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    <div class="modal-header">
+        <h4 id="jhi-discount-heading">
+            <span *ngIf="!discount.id">Crear descuento</span>
+            <span *ngIf="discount.id">Editar descuento</span>
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-around">
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="easyOrderApp.discount.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           [(ngModel)]="discount.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="easyOrderApp.discounts.percentage" for="field_percentage">Percentage</label>
+                    <input type="number" class="form-control" name="percentage" id="field_percentage"
+                        [(ngModel)]="discount.percentage" required/>
+                    <div [hidden]="!(editForm.controls.percentage?.dirty && editForm.controls.percentage?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.percentage?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.percentage?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="easyOrderApp.discounts.starDate" for="field_starDate">Star Date</label>
+                    <div class="d-flex">
+                        <input id="field_starDate" type="date" class="form-control" name="starDate" [(ngModel)]="starDate" placeholder="YYYY-MM-DD"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.starDate?.dirty && editForm.controls.starDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.starDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.starDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="easyOrderApp.discounts.endDate" for="field_endDate">End Date</label>
+                    <div class="d-flex">
+                        <input id="field_endDate" type="date" class="form-control" name="endDate" [(ngModel)]="endDate" placeholder="YYYY-MM-DD"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.endDate?.dirty && editForm.controls.endDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.endDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.endDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="easyOrderApp.discounts.startHour" for="field_startHour">Start Hour</label>
+                    <div class="d-flex">
+                        <input id="field_startHour" type="time" class="form-control" name="startHour" [(ngModel)]="startHour"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="easyOrderApp.discounts.endHour" for="field_endHour">End Hour</label>
+                    <div class="d-flex">
+                        <input id="field_endHour" type="time" class="form-control" name="endHour" [(ngModel)]="endHour"/>
+                    </div>
+                </div>
+                <div class="form-group" [hidden]="!discount.id">
+                    <label class="form-control-label" jhiTranslate="easyOrderApp.discounts.status" for="field_status">Status</label>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" name="status" id="field_status"
+                               [(ngModel)]="discount.status" />
+                        <label class="form-check-label" for="field_status">Activo</label>
+                    </div>
+                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.status?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="easyOrderApp.discounts.days" for="field_days">Days</label>
+                    <select class="form-control" id="field_days" multiple name="days" [(ngModel)]="discount.days">
+                        <option [ngValue]="getSelected(discount.days, listOfValueOption)" *ngFor="let listOfValueOption of listofvalues; trackBy: trackListOfValueById">{{listOfValueOption.description}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="clear()">
+            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn easy-order-btn">
+            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

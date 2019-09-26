@@ -1,0 +1,26 @@
+{
+    "easyOrderApp": {
+        "productByOrder": {
+            "home": {
+                "title": "Product By Orders",
+                "createLabel": "Crear nuevo Product By Order",
+                "createOrEditLabel": "Crear o editar Product By Order"
+            },
+            "created": "Un nuevo Product By Order ha sido creado con el identificador {{ param }}",
+            "updated": "Un Product By Order ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Product By Order ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Product By Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Product By Order"
+            },
+            "quantity": "Quantity",
+            "comment": "Comment",
+            "status": "Status",
+            "orderOk": "Order Ok",
+            "extraInLine": "Extra In Line",
+            "products": "Products"
+        }
+    }
+}

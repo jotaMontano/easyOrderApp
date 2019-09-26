@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="extra">
+            <h2><span jhiTranslate="easyOrderApp.extra.detail.title">Extra</span> {{extra.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="easyOrderApp.extra.name">Name</span></dt>
+                <dd>
+                    <span>{{extra.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.extra.price">Price</span></dt>
+                <dd>
+                    <span>{{extra.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.extra.status">Status</span></dt>
+                <dd>
+                    <span>{{extra.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.extra.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="extra.clientId">
+                        <a [routerLink]="['/client', extra.clientId, 'view']">{{extra.clientId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/extra', extra.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

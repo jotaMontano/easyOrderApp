@@ -1,0 +1,182 @@
+<form name="editForm" role="form"  novalidate (ngSubmit)="save()" #editForm="ngForm">
+    <section>
+        <div class="row justify-content-center">
+            <div class="card col-md-12 ">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        <span class="fa fa-plus" *ngIf="!product.id"> Crear producto</span>
+                        <span class="fa fa-pencil" *ngIf="product.id"> Editar producto</span>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="px-3">
+                        <jhi-alert-error></jhi-alert-error>
+                        <div class="row" >
+                            <div class="col-md-4 center">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_name">Nombre</label>
+                                    <input type="text" class="form-control" name="name" id="field_name"
+                                           [(ngModel)]="product.name" required/>
+                                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                                        <small class="form-text text-danger"
+                                               [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                                            This field is required.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_price">Precio</label>
+                                    <input class="form-control" name="price" id="field_price"
+                                           [(ngModel)]="product.price" required currencyMask [options]="{ prefix: '₡ ', thousands: '.', decimal: ',' }"/>
+                                    <!--currencyMask  [options]="{ prefix: '₡ ', thousands: '.', decimal: ',' }"-->
+                                    <div [hidden]="!(editForm.controls.price?.dirty && editForm.controls.price?.invalid)">
+                                        <small class="form-text text-danger"
+                                               [hidden]="!editForm.controls.price?.errors?.required" jhiTranslate="entity.validation.required">
+                                            This field is required.
+                                        </small>
+                                        <small class="form-text text-danger"
+                                               [hidden]="!editForm.controls.price?.errors?.number" jhiTranslate="entity.validation.number">
+                                            This field should be a number.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="typeProduct">Tipo</label>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="glyphicon-shopping-cart"></i></span>
+                                        </div>
+                                        <select class="form-control" id="typeProduct" name="selectProduct" class="form-control" #selectType (change)="setTypeProduct(selectType.value)">
+                                            <option value="{{type.value}}" *ngFor="let type of listTypesProduct;" [selected]="type.value == product.type">{{type.description}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div [ngClass]="(product.id) ?'col-md-3':'col-md-4'" >
+                                <div class="form-group">
+                                    <label class="form-control-label"  for="field_urlImage">Imagen</label>
+                                    <input type="file" class="form-control" name="urlImage" id="field_urlImage"  (change)="uploadImage($event)" required/>
+                                    <div [hidden]="!(editForm.controls.urlImage?.dirty && editForm.controls.urlImage?.invalid)">
+                                        <small class="form-text text-danger"
+                                               [hidden]="!editForm.controls.urlImage?.errors?.required" jhiTranslate="entity.validation.required">
+                                            This field is required.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_waitAverage">Tiempo de espera</label>
+                                    <input type="number" class="form-control" name="waitAverage" id="field_waitAverage"
+                                           [(ngModel)]="product.waitAverage" required/>
+                                    <div [hidden]="!(editForm.controls.waitAverage?.dirty && editForm.controls.waitAverage?.invalid)">
+                                        <small class="form-text text-danger"
+                                               [hidden]="!editForm.controls.waitAverage?.errors?.required" jhiTranslate="entity.validation.required">
+                                            This field is required.
+                                        </small>
+                                        <small class="form-text text-danger"
+                                               [hidden]="!editForm.controls.waitAverage?.errors?.number" jhiTranslate="entity.validation.number">
+                                            This field should be a number.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_categories">Categoría</label>
+                                    <select class="form-control" id="field_categories" name="categories" [(ngModel)]="product.categoriesId" >
+                                        <option [ngValue]="null"></option>
+                                        <option [ngValue]="categoryOption.id" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-1"  *ngIf="product.id != null">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_status">Estado</label>
+                                    <input type="checkbox" name="status" id="field_status"
+                                           [(ngModel)]="product.status" />
+                                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                                        <small class="form-text text-danger"
+                                               [hidden]="!editForm.controls.status?.errors?.required" jhiTranslate="entity.validation.required">
+                                            This field is required.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label  for="field_discounts">Descuentos</label>
+                                    <select class="form-control" id="field_discounts" multiple name="discounts" [(ngModel)]="product.discounts">
+                                        <option [ngValue]="getSelected(product.discounts, discountOption)" *ngFor="let discountOption of discounts; trackBy: trackDiscountById">{{discountOption.percentage}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="field_extras">Extras</label>
+                                    <select class="form-control" id="field_extras" multiple name="extras" [(ngModel)]="product.extras">
+                                        <option [ngValue]="getSelected(product.extras, extraOption)" *ngFor="let extraOption of extras; trackBy: trackExtraById">{{extraOption.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4"  [ngStyle]="{'display': getTypeValueProduct() ? 'inline' : 'none'}">
+                                <div class="form-group">
+                                    <label for="field_combo">Productos</label>
+                                        <select class="form-control" id="field_combo" multiple name="combo" [(ngModel)]="product.combos">
+                                            <option [ngValue]="getSelected(product.combos, productOption)" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.name}}</option>
+                                        </select>
+                                </div>
+                            </div>
+
+                            <div [ngClass]="getTypeValueProduct() ?'col-md-12':'col-md-4'">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_description">Descripción</label>
+                                    <textarea class="form-control" rows="3" name="description" id="field_description"
+                                              [(ngModel)]="product.description" required>
+                                    </textarea>
+                                    <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                                        <small class="form-text text-danger"
+                                               [hidden]="!editForm.controls.description?.errors?.required" jhiTranslate="entity.validation.required">
+                                            This field is required.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="top">Destacado</label>
+                                    <input type="checkbox" name="top" id="top"
+                                           [(ngModel)]="isTopProduct" (change)="setTop(isTopProduct)"/>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div style="float: right;"  class="form-group">
+                            <button type="button" id="cancel-save" class="btn btn-secondary mb-0"  (click)="previousState()">
+                                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                            </button>
+                            <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn easy-order-btn">
+                                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                            </button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

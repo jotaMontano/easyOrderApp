@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="discount">
+            <h2><span jhiTranslate="easyOrderApp.discount.detail.title">Discount</span> {{discount.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="easyOrderApp.discount.name">Name</span></dt>
+                <dd>
+                    <span>{{discount.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.discount.percentage">Percentage</span></dt>
+                <dd>
+                    <span>{{discount.percentage}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.discount.starDate">Star Date</span></dt>
+                <dd>
+                    <span>{{discount.starDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.discount.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{discount.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.discount.startHour">Start Hour</span></dt>
+                <dd>
+                    <span>{{discount.startHour}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.discount.endHour">End Hour</span></dt>
+                <dd>
+                    <span>{{discount.endHour}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.discount.status">Status</span></dt>
+                <dd>
+                    <span>{{discount.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.discount.days">Days</span></dt>
+                <dd>
+                    <span *ngFor="let days of discount.days; let last = last">
+                        <a [routerLink]="['/list-of-value', days?.id, 'view' ]">{{days.description}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.discount.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="discount.clientId">
+                        <a [routerLink]="['/client', discount.clientId, 'view']">{{discount.clientId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/discount', discount.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

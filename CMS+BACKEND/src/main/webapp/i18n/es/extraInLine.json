@@ -1,0 +1,22 @@
+{
+    "easyOrderApp": {
+        "extraInLine": {
+            "home": {
+                "title": "Extra In Lines",
+                "createLabel": "Crear nuevo Extra In Line",
+                "createOrEditLabel": "Crear o editar Extra In Line"
+            },
+            "created": "Un nuevo Extra In Line ha sido creado con el identificador {{ param }}",
+            "updated": "Un Extra In Line ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Extra In Line ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Extra In Line {{ id }}?"
+            },
+            "detail": {
+                "title": "Extra In Line"
+            },
+            "extra": "Extra",
+            "productByOrder": "Product By Order"
+        }
+    }
+}

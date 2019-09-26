@@ -1,0 +1,104 @@
+<section class="pt-3">
+    <div class="row justify-content-center">
+        <div class="card col-md-12 mt-0">
+            <div class="card-body">
+                <div class="px-3">
+                    <div class="card-header">
+                        <div class="pt-2 pb-2">
+                            <div class="display-inline-block width-25-per valign-middle">
+                                <h2 id="page-heading">
+                                    <span><i class="icon-calculator valign-middle"></i> Descuentos </span>
+                                </h2>
+                            </div>
+                            <div class="row pt-4">
+                                <div class="col-md-4">
+                                    <div class="input-group mb-0">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="icon-check"></i></span>
+                                        </div>
+                                        <select class="form-control" id="status" name="selectStatus" class="form-control" #selectStatus (change)="onSearchByState(selectStatus.value)">
+                                            <option value="" selected disabled hidden>Buscar por estado</option>
+                                            <option value="1">Activos</option>
+                                            <option value="0">Inactivos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-5"></div>
+                                <div class="col-md-3 float-right">
+                                    <div class="display-inline-block float-right valign-middle">
+                                        <button id="jh-create-entity" class="btn easy-order-btn jh-create-entity create-discount"
+                                                [routerLink]="['/', 'discounts', { outlets: { popup: 'new'} }]"
+                                                replaceUrl="true"
+                                                queryParamsHandling="merge">
+                                            <fa-icon [icon]="'plus'"></fa-icon>
+                                            <span>
+                                                Crear descuento
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row table-responsive mx-0" *ngIf="discounts">
+                            <div class="col-md-12 center px-0">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                    <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                                        <th jhiSortBy="name"><span>Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                                        <th jhiSortBy="percentage"><span>Porcentaje</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                                        <th jhiSortBy="starDate"><span>Fecha de inicio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                                        <th jhiSortBy="endDate"><span>Fecha de fin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                                        <th jhiSortBy="startHour"><span>Hora de incio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                                        <th jhiSortBy="endHour"><span>Hora de fin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                                        <th jhiSortBy="status"><span>Estado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                                        <th><span>Acción</span></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr id="actions" *ngFor="let discount of discounts ;trackBy: trackId">
+                                        <td>{{discount.name}}</td>
+                                        <td class="text-center">{{discount.percentage}} %</td>
+                                        <td>{{discount.starDate | date:'dd MMMM y'}}</td>
+                                        <td>{{discount.endDate | date:'dd MMMM y'}}</td>
+                                        <td>{{discount.startHour | date:'hh:mm a'}}</td>
+                                        <td>{{discount.endHour | date:'hh:mm a'}}</td>
+                                        <td> {{discount.status === true ? "Activo": "Inactivo"}}</td>
+                                        <td class="text-center valign-middle width-10-per">
+                                            <button type="submit"
+                                                    [routerLink]="['/', 'discounts', { outlets: { popup: discount.id + '/edit'} }]"
+                                                    replaceUrl="true"
+                                                    queryParamsHandling="merge"
+                                                    class="btn easy-order-btn success-btn btn-sm mb-0">
+                                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                            </button>
+                                            <button *ngIf="discount.status != false" type="submit" (click)="deleteDiscount(discount.id)"
+                                                    class="btn btn-danger danger-btn btn-sm mb-0">
+                                                <span class="fa fa-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div *ngIf="discounts && discounts.length" class="w-100">
+                                <div class="row justify-content-center mx-0">
+                                    <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+                                </div>
+                                <div class="row justify-content-center mx-0">
+                                    <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="discounts.length === 0">
+                            <div class="col-md-12">
+                                <h5 class="text-center font-weight-bold">No hay datos por mostrar.</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

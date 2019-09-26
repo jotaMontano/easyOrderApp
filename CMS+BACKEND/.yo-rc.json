@@ -1,0 +1,37 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.moonshine",
+            "nativeLanguage": "es"
+        },
+        "jhipsterVersion": "5.8.1",
+        "applicationType": "monolith",
+        "baseName": "EasyOrder",
+        "packageName": "com.moonshine",
+        "packageFolder": "com/moonshine",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "no",
+        "websocket": "spring-websocket",
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "ZjdlZWY5ZDg3MjkwZjM0NTUyMDBiYWI5YTlhMGNkMjNiZDU4Yzg3YTQ4ZmVjYzI3ZTM0NjYwZjhjNmQ2NWIyNWU3YWMzMmFiMTFjY2Y5Y2NkNDkxZjE4MjI0NDM0NjY5MGQ3MzllNzU4NjM4MmExMjgwYWVlMDZlNWMzYTNhMTU=",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": true,
+        "nativeLanguage": "es",
+        "languages": ["es"]
+    }
+}

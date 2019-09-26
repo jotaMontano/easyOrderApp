@@ -1,0 +1,89 @@
+
+entity Product {
+	name String required,
+    description String required,
+    price Double required,
+    waitAverage Integer required,
+    urlImage String required,
+    type String required,
+    status Boolean required
+}
+entity Discount {
+	name String required,
+	percentage Double required,
+    starDate Instant required,
+    endDate Instant required,
+    startHour Instant,
+    endHour Instant,
+    status Boolean required
+}
+entity Extra {
+	name String required,
+    price Double required,
+    status Boolean required
+}
+entity Category {
+	description String required,
+    name String required,
+    status Boolean required
+}
+entity Client {
+	email String required,
+    name String required,
+    id String required
+}
+entity OrderOk {
+	total Double required,
+    status Boolean required
+}
+entity ProductByOrder {
+	quantity Integer required,
+    comment String required,
+    status Boolean required
+}
+entity ExtraInLine {}
+entity OrderHistory {
+	total Double required,
+    payDate Instant required
+}
+entity Top {
+	quantity Integer required,
+    type String required,
+}
+entity ListOfValue {
+	value String required,
+    description String required,
+    type String
+}
+
+relationship OneToMany {
+    Category to Product{categories(name)}
+    Product to ProductByOrder{products(name)}
+    OrderOk{orders} to ProductByOrder
+    Product to Top{products(name)}
+    Client{products(name)} to Product
+    Client{categories(name)} to Category
+    Client{extras(name)} to Extra
+    Client{discounts(name)} to Discount
+    Client{order} to OrderOk
+    Client{orderHistory} to OrderHistory
+    Extra to ExtraInLine
+    ProductByOrder to ExtraInLine
+}
+relationship ManyToMany {
+ 	Product{extras(name)} to Extra{products}
+    Product{combo(name)} to Product{products}
+    Product{discounts(percentage)} to Discount{products}
+    Discount{days(description)} to ListOfValue{discounts}
+}
+relationship OneToOne {
+	OrderHistory{order} to OrderOk
+    Client{user} to User
+}
+
+paginate all with pagination
+
+dto * with mapstruct
+
+
+service all with serviceClass

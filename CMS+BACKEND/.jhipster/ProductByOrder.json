@@ -1,0 +1,56 @@
+{
+    "name": "ProductByOrder",
+    "fields": [
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "orderOk",
+            "otherEntityName": "orderOk",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "extraInLine",
+            "otherEntityName": "extraInLine",
+            "otherEntityRelationshipName": "productByOrder"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "products",
+            "otherEntityName": "product",
+            "otherEntityField": "name",
+            "otherEntityRelationshipName": "product"
+        }
+    ],
+    "changelogDate": "20190223014038",
+    "entityTableName": "product_by_order",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

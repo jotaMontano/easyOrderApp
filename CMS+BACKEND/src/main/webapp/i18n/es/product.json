@@ -1,0 +1,35 @@
+{
+    "easyOrderApp": {
+        "product": {
+            "home": {
+                "title": "Products",
+                "createLabel": "Crear nuevo Product",
+                "createOrEditLabel": "Crear o editar Product"
+            },
+            "created": "Un nuevo Product ha sido creado con el identificador {{ param }}",
+            "updated": "Un Product ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Product ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Product {{ id }}?"
+            },
+            "detail": {
+                "title": "Product"
+            },
+            "name": "Name",
+            "description": "Description",
+            "price": "Price",
+            "waitAverage": "Wait Average",
+            "urlImage": "Url Image",
+            "type": "Type",
+            "status": "Status",
+            "productByOrder": "Product By Order",
+            "top": "Top",
+            "extras": "Extras",
+            "combo": "Combo",
+            "discounts": "Discounts",
+            "categories": "Categories",
+            "products": "Products",
+            "client": "Client"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "easyOrderApp": {
+        "discounts": {
+            "home": {
+                "title": "Descuento",
+                "createLabel": "Crear descuento",
+                "createLabel": "Crear descuento",
+                "editLabel": "Editar descuento"
+            },
+            "created": "Un nuevo Discount ha sido creado con el identificador {{ param }}",
+            "updated": "Un Discount ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Discount ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar el descuento {{ id }}?"
+            },
+            "detail": {
+                "title": "Discount"
+            },
+            "percentage": "Porcentaje",
+            "starDate": "Fecha de inicio",
+            "endDate": "Fecha de fin",
+            "startHour": "Hora de inicio",
+            "endHour": "Hora de fin",
+            "status": "Estado",
+            "days": "Días",
+            "products": "Products"
+        }
+    }
+}

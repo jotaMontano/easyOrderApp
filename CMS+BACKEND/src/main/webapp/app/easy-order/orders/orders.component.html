@@ -1,0 +1,109 @@
+<section class="pt-3">
+    <div class="row justify-content-center">
+        <div class="card col-md-12 mt-0">
+            <div class="card-body">
+                <div class="px-3">
+                    <div class="card-header">
+                        <div class="pt-2 pb-4">
+                            <div class="display-inline-block width-25-per valign-middle">
+                                <h2 id="page-heading">
+                                    <span><i class="fas fa-utensils valign-middle"></i> Ordenes </span>
+                                </h2>
+                            </div>
+                            <div class="display-inline-block float-right valign-middle">
+                                    <label for="filtro">Estado:</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-list"></i></span>
+                                            </div>
+                                            <select class="form-control"  name="filtro" id="filtro" #filtro (change)="filter(filtro.value)">
+                                                <option value="Pendiente" >Pendiente</option> <!-- interpolation -->
+                                                <option value="Entregado">Entregado</option>
+                                                <option value="nothing">Todas las ordenes</option> <!-- not selected / blank option -->
+                                            </select>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row table-responsive mx-0" *ngIf="listOrders">
+                            <div class="col-md-12 center px-0">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th><span>Orden</span></th>
+                                        <th><span >Extras</span></th>
+                                        <th><span>Comentarios</span></th>
+                                        <th><span>Total</span></th>
+                                        <th><span>Estado</span></th>
+                                        <th><span>Acción</span></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr id="actions" *ngFor="let order of listOrders ;trackBy: trackId">
+                                        <td>
+                                            <span *ngFor="let product of order.order">{{product}}<br></span>
+                                        </td>
+                                        <td>
+                                            <span *ngFor="let extra of order.extra">{{extra}}<br></span>
+                                        </td>
+                                        <td>
+                                            <span *ngFor="let comment of order.comment">{{comment}}<br></span>
+                                        </td>
+                                        <td>
+                                            <span *ngFor="let price of order.price">{{price}}<br></span>
+                                            <hr>
+                                            <span *ngIf="order.state === 'Entregado'" class="text-success">Total: {{order.total}}</span>
+                                            <span *ngIf="order.state === 'Pendiente'" class="text-danger">Total: {{order.total}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{order.state}}</span>
+                                        </td>
+                                        <td *ngIf="order.state === 'Pendiente'" class="text-center valign-middle width-10-per">
+                                            <button type="submit" (click)="edit(order, filtro.value)"
+                                                    class="btn btn-danger danger-btn btn-sm mb-0">
+                                                <span class="fa fa-stopwatch"></span>
+                                            </button>
+                                        </td>
+                                        <td *ngIf="order.state === 'Entregado'" class="text-center valign-middle width-10-per">
+                                            <button type="submit" disabled
+                                                    class="btn btn-success success-btn btn-sm mb-0">
+                                                <span class="fa ft-check-circle"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="orders.length === 0">
+                            <div class="col-md-12">
+                                <h5 class="text-center font-weight-bold">No hay datos por mostrar.</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Simple Table Starts-->
+<!--<section id="simple">-->
+<!--    <div class="row text-left">-->
+<!--        <div class="col-sm-12">-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <h4 class="card-title">Lista de ordenes</h4>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <div class="card-block">-->
+<!--                        <ng2-smart-table [settings]="settings" [source]="source" (edit)="edit($event)"></ng2-smart-table>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<!--Simple Table Ends-->

@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="productByOrder">
+            <h2><span jhiTranslate="easyOrderApp.productByOrder.detail.title">Product By Order</span> {{productByOrder.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="easyOrderApp.productByOrder.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{productByOrder.quantity}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.productByOrder.comment">Comment</span></dt>
+                <dd>
+                    <span>{{productByOrder.comment}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.productByOrder.status">Status</span></dt>
+                <dd>
+                    <span>{{productByOrder.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.productByOrder.orderOk">Order Ok</span></dt>
+                <dd>
+                    <div *ngIf="productByOrder.orderOkId">
+                        <a [routerLink]="['/order-ok', productByOrder.orderOkId, 'view']">{{productByOrder.orderOkId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.productByOrder.products">Products</span></dt>
+                <dd>
+                    <div *ngIf="productByOrder.productsId">
+                        <a [routerLink]="['/product', productByOrder.productsId, 'view']">{{productByOrder.productsName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product-by-order', productByOrder.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

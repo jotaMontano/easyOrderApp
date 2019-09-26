@@ -1,0 +1,76 @@
+:host ::ng-deep .info {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+:host ::ng-deep .page-item.active .page-link {
+    color: #fff;
+    background-color: #009688;
+    border-color: #dee2e6;
+    &:focus {
+        box-shadow: 0 0 0 0;
+    }
+}
+
+:host ::ng-deep .page-item .page-link {
+    color: #6c757d;
+    border-color: #dee2e6;
+    &:focus {
+        box-shadow: 0 0 0 0;
+    }
+}
+
+thead tr {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+#buscar:focus {
+    border-color: #38c770 !important;
+    box-shadow: 0 0 0 0.2rem rgba(19, 206, 56, 0.25);
+}
+
+#buscar:hover {
+    border-color: #38c770 !important;
+}
+
+$transition-tablerow: all 0.2s ease-in;
+#actions {
+    transition: $transition-tablerow;
+    .btn-secondary {
+        /* opacity: 0; */
+        border-color: transparent;
+        background-color: #b4b4b4; /* d1d1d1 */
+        //&:hover {
+        //
+        //    &.success-btn:hover {
+        //        color: #fff;
+        //        background-color: #009688;
+        //        border-color: #009688;
+        //    }
+        //
+        //    &.danger-btn:hover {
+        //        color: #fff;
+        //        background-color: #dc3545;
+        //        border-color: #dc3545;
+        //    }
+        //}
+    }
+
+    &:hover {
+        .btn-secondary {
+            transition: $transition-tablerow;
+            opacity: 1;
+        }
+    }
+}
+
+.easy-order-btn {
+    color: #fff;
+    background-color: #009688;
+    border-color: #009688;
+}
+
+.easy-order-btn:hover {
+    color: #fff;
+    background-color: #00796b;
+    border-color: #00796b;
+}

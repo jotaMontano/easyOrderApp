@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="top">
+            <h2><span jhiTranslate="easyOrderApp.top.detail.title">Top</span> {{top.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="easyOrderApp.top.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{top.quantity}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.top.type">Type</span></dt>
+                <dd>
+                    <span>{{top.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.top.products">Products</span></dt>
+                <dd>
+                    <div *ngIf="top.productsId">
+                        <a [routerLink]="['/product', top.productsId, 'view']">{{top.productsName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/top', top.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

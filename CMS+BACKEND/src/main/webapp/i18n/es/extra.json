@@ -1,0 +1,26 @@
+{
+    "easyOrderApp": {
+        "extra": {
+            "home": {
+                "title": "Extras",
+                "createLabel": "Nuevo Extra",
+                "createOrEditLabel": "Crear o editar Extra"
+            },
+            "created": "Un nuevo Extra ha sido creado con el identificador {{ param }}",
+            "updated": "Un Extra ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Extra ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Extra {{ id }}?"
+            },
+            "detail": {
+                "title": "Extra"
+            },
+            "name": "Nombre",
+            "price": "Precio",
+            "status": "Estado",
+            "extraInLine": "Extra In Line",
+            "products": "Products",
+            "client": "Client"
+        }
+    }
+}

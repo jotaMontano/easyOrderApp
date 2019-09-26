@@ -1,0 +1,29 @@
+{
+    "name": "ExtraInLine",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "extra",
+            "otherEntityName": "extra",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "extraInLine"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "productByOrder",
+            "otherEntityName": "productByOrder",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "extraInLine"
+        }
+    ],
+    "changelogDate": "20190309063228",
+    "entityTableName": "extra_in_line",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

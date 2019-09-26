@@ -1,0 +1,24 @@
+{
+    "easyOrderApp": {
+        "listOfValue": {
+            "home": {
+                "title": "List Of Values",
+                "createLabel": "Crear nuevo List Of Value",
+                "createOrEditLabel": "Crear o editar List Of Value"
+            },
+            "created": "Un nuevo List Of Value ha sido creado con el identificador {{ param }}",
+            "updated": "Un List Of Value ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un List Of Value ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar List Of Value {{ id }}?"
+            },
+            "detail": {
+                "title": "List Of Value"
+            },
+            "value": "Value",
+            "description": "Description",
+            "type": "Type",
+            "discounts": "Discounts"
+        }
+    }
+}

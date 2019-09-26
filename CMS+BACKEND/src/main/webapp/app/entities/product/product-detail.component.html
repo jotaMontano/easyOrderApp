@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="product">
+            <h2><span jhiTranslate="easyOrderApp.product.detail.title">Product</span> {{product.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="easyOrderApp.product.name">Name</span></dt>
+                <dd>
+                    <span>{{product.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.description">Description</span></dt>
+                <dd>
+                    <span>{{product.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.price">Price</span></dt>
+                <dd>
+                    <span>{{product.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.waitAverage">Wait Average</span></dt>
+                <dd>
+                    <span>{{product.waitAverage}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.urlImage">Url Image</span></dt>
+                <dd>
+                    <span>{{product.urlImage}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.type">Type</span></dt>
+                <dd>
+                    <span>{{product.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.status">Status</span></dt>
+                <dd>
+                    <span>{{product.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.extras">Extras</span></dt>
+                <dd>
+                    <span *ngFor="let extras of product.extras; let last = last">
+                        <a [routerLink]="['/extra', extras?.id, 'view' ]">{{extras.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.combo">Combo</span></dt>
+                <dd>
+                    <span *ngFor="let combo of product.combos; let last = last">
+                        <a [routerLink]="['/product', combo?.id, 'view' ]">{{combo.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.discounts">Discounts</span></dt>
+                <dd>
+                    <span *ngFor="let discounts of product.discounts; let last = last">
+                        <a [routerLink]="['/discount', discounts?.id, 'view' ]">{{discounts.percentage}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.categories">Categories</span></dt>
+                <dd>
+                    <div *ngIf="product.categoriesId">
+                        <a [routerLink]="['/category', product.categoriesId, 'view']">{{product.categoriesName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.product.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="product.clientId">
+                        <a [routerLink]="['/client', product.clientId, 'view']">{{product.clientId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product', product.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

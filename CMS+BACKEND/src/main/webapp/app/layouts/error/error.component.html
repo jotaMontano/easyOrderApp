@@ -1,0 +1,39 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div [hidden]="!errorMessage">
+                <div class="error-div">
+                    <h1 class="pt-3 text-center">¡Error en el servidor!</h1>
+                    <p class="zoom-area"><b>Lo sentimos</b>, algo ah salido mal. Estamos trabajando para corregirlo.</p>
+                    <section class="error-container">
+                        <span><span>5</span></span>
+                        <span>0</span>
+                        <span><span>0</span></span>
+                    </section>
+                </div>
+            </div>
+            <div [hidden]="!error403">
+                <div class="access-div">
+                    <div class="access-body">
+                        <div class="lock pb-5"></div>
+                        <div class="message pt-5">
+                            <h1>El acceso a esta página está restringido</h1>
+                            <p class="text-center">Favor pongase en en contacto con el adminitrador si usted cree que es un error.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div [hidden]="!error404">
+                <div class="box">
+                    <div>
+                        Cerrado
+                    </div>
+                    <p>
+                        <span class="mb-3">¡error 404!</span>
+                        Lo sentimos, no se encontro la página que buscabas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

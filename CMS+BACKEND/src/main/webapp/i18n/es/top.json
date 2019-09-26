@@ -1,0 +1,23 @@
+{
+    "easyOrderApp": {
+        "top": {
+            "home": {
+                "title": "Tops",
+                "createLabel": "Crear nuevo Top",
+                "createOrEditLabel": "Crear o editar Top"
+            },
+            "created": "Un nuevo Top ha sido creado con el identificador {{ param }}",
+            "updated": "Un Top ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Top ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Top {{ id }}?"
+            },
+            "detail": {
+                "title": "Top"
+            },
+            "quantity": "Quantity",
+            "type": "Type",
+            "products": "Products"
+        }
+    }
+}

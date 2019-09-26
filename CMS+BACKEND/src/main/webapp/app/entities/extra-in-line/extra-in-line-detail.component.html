@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="extraInLine">
+            <h2><span jhiTranslate="easyOrderApp.extraInLine.detail.title">Extra In Line</span> {{extraInLine.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="easyOrderApp.extraInLine.extra">Extra</span></dt>
+                <dd>
+                    <div *ngIf="extraInLine.extraId">
+                        <a [routerLink]="['/extra', extraInLine.extraId, 'view']">{{extraInLine.extraId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="easyOrderApp.extraInLine.productByOrder">Product By Order</span></dt>
+                <dd>
+                    <div *ngIf="extraInLine.productByOrderId">
+                        <a [routerLink]="['/product-by-order', extraInLine.productByOrderId, 'view']">{{extraInLine.productByOrderId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/extra-in-line', extraInLine.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+    "easyOrderApp": {
+        "orderOk": {
+            "home": {
+                "title": "Order Oks",
+                "createLabel": "Crear nuevo Order Ok",
+                "createOrEditLabel": "Crear o editar Order Ok"
+            },
+            "created": "Un nuevo Order Ok ha sido creado con el identificador {{ param }}",
+            "updated": "Un Order Ok ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Order Ok ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Order Ok {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Ok"
+            },
+            "total": "Total",
+            "status": "Status",
+            "client": "Client",
+            "orders": "Orders"
+        }
+    }
+}

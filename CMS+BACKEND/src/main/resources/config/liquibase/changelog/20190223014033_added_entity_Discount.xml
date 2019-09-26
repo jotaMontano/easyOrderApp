@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Discount.
+    -->
+    <changeSet id="20190223014033-1" author="jhipster">
+        <createTable tableName="discount">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="percentage" type="double">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="star_date" type="datetime">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="end_date" type="datetime">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="start_hour" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="end_hour" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="status" type="boolean">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="client_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="discount" columnName="star_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="discount" columnName="end_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="discount" columnName="start_hour" columnDataType="datetime"/>
+        <dropDefaultValue tableName="discount" columnName="end_hour" columnDataType="datetime"/>
+        
+        <createTable tableName="discount_days">
+            <column name="days_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="discount_id, days_id" tableName="discount_days"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

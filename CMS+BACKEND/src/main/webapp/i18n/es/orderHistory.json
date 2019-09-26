@@ -1,0 +1,24 @@
+{
+    "easyOrderApp": {
+        "orderHistory": {
+            "home": {
+                "title": "Order Histories",
+                "createLabel": "Crear nuevo Order History",
+                "createOrEditLabel": "Crear o editar Order History"
+            },
+            "created": "Un nuevo Order History ha sido creado con el identificador {{ param }}",
+            "updated": "Un Order History ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Order History ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Order History {{ id }}?"
+            },
+            "detail": {
+                "title": "Order History"
+            },
+            "total": "Total",
+            "payDate": "Pay Date",
+            "client": "Client",
+            "order": "Order"
+        }
+    }
+}
